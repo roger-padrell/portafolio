@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@842&display=swap');
+
+body{
+    display: flex;
+    margin: 0px;
+    justify-content: center;
+    align-items: center;
+}
+
+#runButton{
+    all:unset;
+    font-family: "League Spartan", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 842;
+    font-style: normal;
+    height: 70px;
+    width: 200px;
+    font-size: 120%;
+    border-radius: 100px;
+    text-align: center;
+    background-color: #000;
+    color: white;
+    contain: strict;
+    cursor: none;
+}
+
+#runButton p{
+    z-index: 0;
+}
+
+#runButton cursor{
+    z-index: 1;
+    display: block;
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    border-radius: 100%;
+    background-color: #00FF7F;
+    contain: strict;
+    transition: transform .4s;
+    transform-origin: 50%;
+}
+
+#runButton cursor p{
+    z-index: 2;
+    color: black;
+    position: absolute;
+}
+
+#runButton cursor:active{
+    transform: scale(1.5) !important;
+}
+
+liquid{
+    z-index: 2;
+    position: absolute;
+    height: 150%;
+    width: calc(100% / 8);
+    background-color: black;
+    border-radius: 400px;
+    top: -150%;
+}
+
+lcont{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    height: 100%;
+    width: 100%;
+    contain: strict;
+}
+
+liquid:nth-child(1){
+    left: calc(100% / 8 * 0);
+}
+liquid:nth-child(2){
+    left: calc(100% / 8 * 1);
+}
+liquid:nth-child(3){
+    left: calc(100% / 8 * 2);
+}
+liquid:nth-child(4){
+    left: calc(100% / 8 * 3);
+}
+liquid:nth-child(5){
+    left: calc(100% / 8 * 4);
+}
+liquid:nth-child(6){
+    left: calc(100% / 8 * 5);
+}
+liquid:nth-child(7){
+    left: calc(100% / 8 * 6);
+}
+liquid:nth-child(8){
+    left: calc(100% / 8 * 7);
+}
+liquid:nth-child(9){
+    left: calc(100% / 8 * 8);
+}
