@@ -1,29 +1,31 @@
 //load the data
 getData().then(r => window.dt = r)
 
+//kursor
+let k = new kursor({
+    type: 1,
+    removeDefaultCursor: true
+})
+
 //mouse animation on run button
-let mouseOnRunButton = false;
-runCursor.style.transform = "scale(0,0)";
-runButton.onmousemove = function(e){
-    runCursor.style.left = e.clientX - ((screen.width/2)-410);
-    runCursor.style.top = e.clientY - ((screen.height/2)-110);
-    runCursorText.style.left = 0 - (e.clientX - ((screen.width/2)-410)) + 21;
-    runCursorText.style.top = 0 - (e.clientY - ((screen.height/2)-110)) + 7;
-    mouseOnRunButton=true;
+let inButton = true;
+runButton.onmouseenter = function(){
+    if(inButton){
+        k.kursor.classList.add("--hover")
+        k.color("#00BFFF")
+    }
 }
 runButton.onmouseleave = function(){
-    mouseOnRunButton=false;
-}
-document.body.onmousemove = function(e){
-    if(!mouseOnRunButton){
-        runCursor.style.transform = "scale(0,0)";
-    }
-    else{
-        runCursor.style.transform = "none";
+    if(inButton){
+        k.kursor.classList.remove("--hover")
+        k.color("#000")
     }
 }
 
 function run(){
+    inButton = false;
+    k.kursor.classList.remove("--hover")
+    k.color("#FFF")
     document.getElementsByTagName("lcont")[0].style.zIndex = "2";
     //liquids fall
     let arr = Array.from(document.getElementsByTagName("liquid"));
@@ -35,14 +37,19 @@ function run(){
     mainTitle.setLenght = 0;
 
     //show title
-    anime({
-        target: mainTitle,
-        setLenght: "Roger Padrell Casar".length,
+    window.a = anime({
+        target: "#mainTitle",
+        setLenght: 20,
         round: 1,
         easing: 'linear',
+        autoplay: true,
+        duration: 5000,
+        delay: 4000,
         update: function(){
+            console.log(mainTitle.setLenght);
+            mainTitle.setLenght += 20/300;
             //string with lenght setLenght
-            mainTitle.innerHTML = ""
+            mainTitle.innerHTML = "Roger Padrell Casar ".slice(0,Math.floor(mainTitle.setLenght));
         }
     })
 }
